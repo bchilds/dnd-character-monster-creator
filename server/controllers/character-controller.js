@@ -115,25 +115,22 @@ const deleteCharacter = async (req, res) => {
 };
 
 const getCharacterById = async (req, res) => {
-  await Character.findOne(
-    { _id: req.params.id },
-    (err, character) => {
-      if (err) {
-        return res.status(400).json({
-          success: false,
-          error: err,
-        });
-      }
+  await Character.findOne({ _id: req.params.id }, (err, character) => {
+    if (err) {
+      return res.status(400).json({
+        success: false,
+        error: err,
+      });
+    }
 
-      if (!character) {
-        return res
-          .status(404)
-          .json({ success: false, error: `Character not found` });
-      }
+    if (!character) {
+      return res
+        .status(404)
+        .json({ success: false, error: `Character not found` });
+    }
 
-      return res.send(200).json({ success: true, data: character });
-    })
-  .catch((err) => {
+    return res.send(200).json({ success: true, data: character });
+  }).catch((err) => {
     console.log(err);
   });
 };
