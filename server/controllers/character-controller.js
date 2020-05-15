@@ -1,3 +1,4 @@
+const util = require("util");
 const Character = require("../db/models/character");
 
 const createCharacter = (req, res) => {
@@ -65,33 +66,31 @@ const updateCharacter = async (req, res) => {
     });
   }
 
-  Character.findOne({ _id: req.params.id }, (err, character) => {
-    if (err) {
-      return res.status(404).json({
-        err,
-        message: "Character not found!",
+  // validate body
+
+  Character.findByIdAndUpdate(
+    { _id: req.params.id },
+    { ...body },
+    { upsert: true },
+    (err, character) => {
+      if (err) {
+        return res.status(404).json({
+          err,
+          message: "Character not found!",
+        });
+      }
+
+      return res.status(200).json({
+        success: true,
+        id: character._id,
+        message: "Character updated!",
       });
     }
-
-    character.name = body.name || character.name || "Unnamed Hero";
-    character.level = body.level || character.level || 1;
-    character.characterClass =
-      body.class || character.characterClass || "Unknown";
-    character
-      .save()
-      .then(() => {
-        return res.status(200).json({
-          success: true,
-          id: character._id,
-          message: "Character updated!",
-        });
-      })
-      .catch((error) => {
-        return res.status(404).json({
-          error,
-          message: "Character not updated!",
-        });
-      });
+  ).catch((error) => {
+    return res.status(404).json({
+      error,
+      message: "Character not updated!",
+    });
   });
 };
 
