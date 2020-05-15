@@ -10,7 +10,7 @@ const createCharacter = (req, res) => {
     });
   }
 
-  const character = new Character();
+  const character = new Character(body);
   if (!character) {
     return res.status(400).json({
       success: false,
@@ -117,8 +117,7 @@ const deleteCharacter = async (req, res) => {
 const getCharacterById = async (req, res) => {
   await Character.findOne(
     { _id: req.params.id },
-    (err,
-    (character) => {
+    (err, character) => {
       if (err) {
         return res.status(400).json({
           success: false,
@@ -134,7 +133,7 @@ const getCharacterById = async (req, res) => {
 
       return res.send(200).json({ success: true, data: character });
     })
-  ).catch((err) => {
+  .catch((err) => {
     console.log(err);
   });
 };
@@ -154,7 +153,7 @@ const getAllCharacters = async (req, res) => {
         .json({ success: false, error: `Characters not found` });
     }
 
-    return res.send(200).json({ success: true, data: characters });
+    return res.status(200).json({ success: true, data: characters });
   });
 };
 
