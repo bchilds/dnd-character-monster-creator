@@ -2,11 +2,11 @@ import React, { useState, useEffect, useMemo } from "react";
 import ReactTable from "react-table-v6";
 
 import { getAllCharacters } from "../../../src/api/character/api";
-import UpdateLink from './update-link';
-import DeleteLink from './delete-link';
+import UpdateLink from "./update-link";
+import DeleteLink from "./delete-link";
 
 import styled from "styled-components";
-import 'react-table-v6/react-table.css'
+import "react-table-v6/react-table.css";
 
 const Wrapper = styled.div`
   padding: 0 40px 40px 40px;
@@ -50,26 +50,29 @@ const getDefaultColumns = () => [
     filterable: true,
   },
   {
-    Header: '',
-    accessor: '',
-    Cell: function(props) {
+    Header: "",
+    accessor: "",
+    Cell: function (props) {
       return (
-      <span>
-        <UpdateLink id={props.original._id} attributes={undefined/*something*/} />
-      </span>
+        <span>
+          <UpdateLink
+            id={props.original._id}
+            attributes={undefined /*something*/}
+          />
+        </span>
       );
-    }
+    },
   },
   {
-    Header: '',
-    accessor: '',
-    Cell: function(props) {
+    Header: "",
+    accessor: "",
+    Cell: function (props) {
       return (
-      <span>
-        <DeleteLink id={props.original._id} />
-      </span>
+        <span>
+          <DeleteLink id={props.original._id} />
+        </span>
       );
-    }
+    },
   },
 ];
 
