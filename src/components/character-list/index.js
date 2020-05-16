@@ -2,6 +2,8 @@ import React, { useState, useEffect, useMemo } from "react";
 import ReactTable from "react-table-v6";
 
 import { getAllCharacters } from "../../../src/api/character/api";
+import UpdateLink from './update-link';
+import DeleteLink from './delete-link';
 
 import styled from "styled-components";
 import 'react-table-v6/react-table.css'
@@ -47,10 +49,32 @@ const getDefaultColumns = () => [
     accessor: "subclass",
     filterable: true,
   },
+  {
+    Header: '',
+    accessor: '',
+    Cell: function(props) {
+      return (
+      <span>
+        <UpdateLink id={props.original._id} attributes={undefined/*something*/} />
+      </span>
+      );
+    }
+  },
+  {
+    Header: '',
+    accessor: '',
+    Cell: function(props) {
+      return (
+      <span>
+        <DeleteLink id={props.original._id} />
+      </span>
+      );
+    }
+  },
 ];
 
 const CharacterList = () => {
-  const [isLoading, setLoading] = useState(null);
+  const [isLoading, setLoading] = useState(true);
   const [characters, setCharacters] = useState([]);
   const tableColumns = useMemo(getDefaultColumns);
 
