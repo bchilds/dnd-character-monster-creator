@@ -2,11 +2,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import logo from '../../images/dnd_5e_logo.svg';
+import logo from '../../images/dnd_5e_logo_opt.svg';
 
 const Wrapper = styled.a.attrs({
   className: 'navbar-brand'
-})
+})``;
 
 const Logo = () => (
   <Wrapper href="https://dnd.wizards.com/" target="_blank">
