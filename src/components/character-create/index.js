@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import {
   createNewCharacter,
@@ -17,11 +17,11 @@ const useInput = (fieldName, initialValue) => {
 };
 
 const Title = styled.h1.attrs({
-  className: 'h1',
+  className: "h1",
 })``;
 
 const Wrapper = styled.div.attrs({
-  className: 'form-group',
+  className: "form-group",
 })`
   margin: 0 30px;
 `;
@@ -31,13 +31,13 @@ const Label = styled.label`
 `;
 
 const InputText = styled.input.attrs({
-  className: 'form-control',
+  className: "form-control",
 })`
   margin: 5px;
 `;
 
 const Button = styled.button.attrs({
-  className: 'btn btn-primary',
+  className: "btn btn-primary",
 })`
   margin: 15px 15px 15px 5px;
 `;
@@ -49,10 +49,13 @@ const CancelButton = styled.button.attrs({
 `;
 
 const CharacterCreate = ({ existingCharacter }) => {
-  const nameProps = useInput('name', existingCharacter?.name || 'Name Here');
-  const raceProps = useInput('race', existingCharacter?.race || '');
-  const levelProps = useInput('level', existingCharacter?.level || 1);
-  const characterClassProps = useInput('characterClass', existingCharacter?.characterClass || '');
+  const nameProps = useInput("name", existingCharacter?.name || "Name Here");
+  const raceProps = useInput("race", existingCharacter?.race || "");
+  const levelProps = useInput("level", existingCharacter?.level || 1);
+  const characterClassProps = useInput(
+    "characterClass",
+    existingCharacter?.characterClass || ""
+  );
   const subclassProps = useInput("subclass", existingCharacter?.subclass || "");
 
   const onSubmit = useCallback(() => {
@@ -70,7 +73,14 @@ const CharacterCreate = ({ existingCharacter }) => {
     doesCharacterExist
       ? editCharacterAttributesById(existingCharacter._id, body)
       : createNewCharacter(body);
-  }, [existingCharacter, nameProps.value, raceProps.value, levelProps.value, characterClassProps.value, subclassProps.value]);
+  }, [
+    existingCharacter,
+    nameProps.value,
+    raceProps.value,
+    levelProps.value,
+    characterClassProps.value,
+    subclassProps.value,
+  ]);
 
   return (
     <Wrapper>

@@ -20,7 +20,7 @@ function App() {
           component={Pages.CharacterCreate}
         />
         <Route
-          path="/characters/update/:id/"
+          path="/character/update/:id/"
           exact
           component={Pages.CharacterUpdate}
         />

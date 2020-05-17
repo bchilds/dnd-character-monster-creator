@@ -128,7 +128,7 @@ const getCharacterById = async (req, res) => {
         .json({ success: false, error: `Character not found` });
     }
 
-    return res.send(200).json({ success: true, data: character });
+    return res.status(200).json({ success: true, data: character });
   }).catch((err) => {
     console.log(err);
   });
