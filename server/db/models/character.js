@@ -5,7 +5,7 @@ const Character = new Schema(
   {
     name: { type: String, required: true },
     race: { type: String, required: false },
-    level: { type: [Number], required: true },
+    level: { type: Number, required: true },
     characterClass: { type: String, required: true },
     subclass: { type: String, required: false },
   },

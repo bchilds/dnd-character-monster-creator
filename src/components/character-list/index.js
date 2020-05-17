@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useMemo } from "react";
-import ReactTable from "react-table-v6";
+import PreformattedTable from '../../../src/components/react-table';
 
 import { getAllCharacters } from "../../../src/api/character/api";
 import UpdateLink from "./update-link";
 import DeleteLink from "./delete-link";
 
 import styled from "styled-components";
-import "react-table-v6/react-table.css";
 
 const Wrapper = styled.div`
-  padding: 0 40px 40px 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 const Empty = () => (
@@ -51,25 +52,22 @@ const getDefaultColumns = () => [
   },
   {
     Header: "",
-    accessor: "",
-    Cell: function (props) {
+    accessor: "update-link",
+    Cell: function ({ row }) {
       return (
         <span>
-          <UpdateLink
-            id={props.original._id}
-            attributes={undefined /*something*/}
-          />
+          <UpdateLink id={row.values._id} />
         </span>
       );
     },
   },
   {
     Header: "",
-    accessor: "",
-    Cell: function (props) {
+    accessor: "delete-link",
+    Cell: function ({ row }) {
       return (
         <span>
-          <DeleteLink id={props.original._id} />
+          <DeleteLink id={row.values._id} />
         </span>
       );
     },
@@ -106,16 +104,16 @@ const CharacterList = () => {
     return <Wrapper>{Empty()}</Wrapper>;
   }
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <Wrapper>
-      <ReactTable
+      <PreformattedTable
         data={characters}
         columns={tableColumns}
-        loading={isLoading}
-        defaultPageSize={10}
-        showPageSizeOptions={true}
-        minRows={5}
-      />
+      ></PreformattedTable>
     </Wrapper>
   );
 };
