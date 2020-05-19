@@ -1,20 +1,13 @@
 import React, { useState, useEffect, useMemo } from "react";
 import PreformattedTable from '../../../src/components/react-table';
+import style from './style.module.scss';
 
 import { getAllCharacters } from "../../../src/api/character/api";
 import UpdateLink from "./update-link";
 import DeleteLink from "./delete-link";
 
-import styled from "styled-components";
-
-const Wrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`;
-
 const Empty = () => (
-  <div>
+  <div className='empty'>
     <h2>You have no characters! Go make some!</h2>
   </div>
 );
@@ -101,7 +94,7 @@ const CharacterList = () => {
   const isEmptyAndNotLoading = !isLoading && characters.length === 0;
 
   if (isEmptyAndNotLoading) {
-    return <Wrapper>{Empty()}</Wrapper>;
+    return Empty();
   }
 
   if (isLoading) {
@@ -109,12 +102,9 @@ const CharacterList = () => {
   }
 
   return (
-    <Wrapper>
-      <PreformattedTable
-        data={characters}
-        columns={tableColumns}
-      ></PreformattedTable>
-    </Wrapper>
+    <div className={style["preformatted-table"]}>
+      <PreformattedTable data={characters} columns={tableColumns} />
+    </div>
   );
 };
 

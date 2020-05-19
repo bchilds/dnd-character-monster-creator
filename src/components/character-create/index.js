@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
+import style from './style.module.scss';
 
 import {
   createNewCharacter,
@@ -24,10 +25,6 @@ const Wrapper = styled.div.attrs({
   className: "form-group",
 })`
   margin: 0 30px;
-`;
-
-const Label = styled.label`
-  margin: 5px;
 `;
 
 const InputText = styled.input.attrs({
@@ -87,11 +84,11 @@ const CharacterCreate = ({ existingCharacter }) => {
       <Title>
         {!!existingCharacter ? `Edit ${nameProps.value}` : "Create A Character"}
       </Title>
-      <Label>Character Name: </Label>
+      <label className={style["delete-link"]}>Character Name: </label>
       <InputText type="text" {...nameProps}></InputText>
-      <Label>Race: </Label>
+      <label>Race: </label>
       <InputText type="text" {...raceProps}></InputText>
-      <Label>Level: </Label>
+      <label>Level: </label>
       <InputText
         type="number"
         step="1"
@@ -99,9 +96,9 @@ const CharacterCreate = ({ existingCharacter }) => {
         pattern="[0-9]+([,\.][0-9]+)?"
         {...levelProps}
       ></InputText>
-      <Label>Class: </Label>
+      <label>Class: </label>
       <InputText type="text" {...characterClassProps}></InputText>
-      <Label>Subclass (Archetype): </Label>
+      <label>Subclass (Archetype): </label>
       <InputText type="text" {...subclassProps}></InputText>
 
       <Button onClick={onSubmit}>Submit Character</Button>
@@ -114,7 +111,7 @@ CharacterCreate.propTypes = {
   existingCharacter: PropTypes.shape({
     _id: PropTypes.string,
     name: PropTypes.string,
-    level: PropTypes.string,
+    level: PropTypes.number,
     race: PropTypes.string,
     characterClass: PropTypes.string,
     subclass: PropTypes.string,

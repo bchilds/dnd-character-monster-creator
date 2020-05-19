@@ -1,11 +1,6 @@
 import React, { useCallback } from "react";
-import styled from "styled-components";
+import style from "./style.module.scss";
 import { deleteCharacter } from "../../api/character/api";
-
-const Delete = styled.div`
-  color: #ff0000;
-  cursor: pointer;
-`;
 
 const DeleteLink = ({ id }) => {
   const handleDelete = useCallback(
@@ -26,7 +21,7 @@ const DeleteLink = ({ id }) => {
     [id]
   );
 
-  return <Delete onClick={handleDelete}>Delete</Delete>;
+  return <div className={style['delete-link']} onClick={handleDelete}>Delete</div>;
 };
 
 export default DeleteLink;

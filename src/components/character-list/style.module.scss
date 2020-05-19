@@ -1,0 +1,15 @@
+.delete-link {
+  color: #ff0000;
+  cursor: pointer;
+}
+
+.update-link {
+  color: #ef9b0f;
+  cursor: pointer;
+}
+
+.empty, .preformatted-table {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
