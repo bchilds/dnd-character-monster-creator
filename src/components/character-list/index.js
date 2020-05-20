@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useMemo } from "react";
-import PreformattedTable from '../../../src/components/react-table';
-import style from './style.module.scss';
+import PreformattedTable from "../../../src/components/react-table";
+import style from "./style.module.scss";
 
 import { getAllCharacters } from "../../../src/api/character/api";
 import UpdateLink from "./update-link";
 import DeleteLink from "./delete-link";
 
 const Empty = () => (
-  <div className='empty'>
+  <div className="empty">
     <h2>You have no characters! Go make some!</h2>
   </div>
 );

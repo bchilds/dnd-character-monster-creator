@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import style from './style.module.scss';
+import style from "./style.module.scss";
 
 const UpdateLink = ({ id }) => {
   const handleUpdate = useCallback(
@@ -10,7 +10,11 @@ const UpdateLink = ({ id }) => {
     [id]
   );
 
-  return <div className={style['update-link']} onClick={handleUpdate}>Update Attributes</div>;
+  return (
+    <div className={style["update-link"]} onClick={handleUpdate}>
+      Update Attributes
+    </div>
+  );
 };
 
 export default UpdateLink;

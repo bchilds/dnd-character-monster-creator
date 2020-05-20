@@ -1,40 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 
-const Collapse = styled.div.attrs({
-  className: 'navbar-collapse',
-  // className: 'collapse navbar-collapse',
-})``;
-
-const List = styled.div.attrs({
-  className: 'navbar-nav mr-auto'
-})``;
-
-const Item = styled.div.attrs({
-  className: 'navbar-collapse'
-  // className: 'collapse navbar-collapse'
-})``;
+// TODO -- styles and classnames for divs
 
 const Links = () => (
   <>
     <Link to="/" className="navbar-brand">
       Character Management
     </Link>
-    <Collapse>
-      <List>
-        <Item>
-          <Link to="/characters/list" className="nav-link">
+    <div>
+      <div>
+        <div>
+          <Link to="/characters/div" className="nav-link">
             List Characters
           </Link>
-        </Item>
-        <Item>
+        </div>
+        <div>
           <Link to="/characters/create" className="nav-link">
             Create Character
           </Link>
-        </Item>
-      </List>
-    </Collapse>
+        </div>
+      </div>
+    </div>
   </>
 );
 

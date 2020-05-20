@@ -1,13 +1,11 @@
 import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
-import style from './style.module.scss';
+import style from "./style.module.scss";
 
 import {
   createNewCharacter,
   editCharacterAttributesById,
 } from "../../../src/api/character/api";
-
-import styled from "styled-components";
 
 const useInput = (fieldName, initialValue) => {
   const [value, setValue] = useState(initialValue);
@@ -16,34 +14,6 @@ const useInput = (fieldName, initialValue) => {
   }, []);
   return { onChange, value };
 };
-
-const Title = styled.h1.attrs({
-  className: "h1",
-})``;
-
-const Wrapper = styled.div.attrs({
-  className: "form-group",
-})`
-  margin: 0 30px;
-`;
-
-const InputText = styled.input.attrs({
-  className: "form-control",
-})`
-  margin: 5px;
-`;
-
-const Button = styled.button.attrs({
-  className: "btn btn-primary",
-})`
-  margin: 15px 15px 15px 5px;
-`;
-
-const CancelButton = styled.button.attrs({
-  className: "btn btn-danger",
-})`
-  margin: 15px 15px 15px 5px;
-`;
 
 const CharacterCreate = ({ existingCharacter }) => {
   const nameProps = useInput("name", existingCharacter?.name || "Name Here");
@@ -80,30 +50,51 @@ const CharacterCreate = ({ existingCharacter }) => {
   ]);
 
   return (
-    <Wrapper>
-      <Title>
+    <div className={style["form-group"]}>
+      <h1>
         {!!existingCharacter ? `Edit ${nameProps.value}` : "Create A Character"}
-      </Title>
+      </h1>
       <label className={style["delete-link"]}>Character Name: </label>
-      <InputText type="text" {...nameProps}></InputText>
+      <input
+        className={style["form-control"]}
+        type="text"
+        {...nameProps}
+      ></input>
       <label>Race: </label>
-      <InputText type="text" {...raceProps}></InputText>
+      <input
+        className={style["form-control"]}
+        type="text"
+        {...raceProps}
+      ></input>
       <label>Level: </label>
-      <InputText
+      <input
+        className={style["form-control"]}
         type="number"
         step="1"
         min="1"
         pattern="[0-9]+([,\.][0-9]+)?"
         {...levelProps}
-      ></InputText>
+      ></input>
       <label>Class: </label>
-      <InputText type="text" {...characterClassProps}></InputText>
+      <input
+        className={style["form-control"]}
+        type="text"
+        {...characterClassProps}
+      ></input>
       <label>Subclass (Archetype): </label>
-      <InputText type="text" {...subclassProps}></InputText>
+      <input
+        className={style["form-control"]}
+        type="text"
+        {...subclassProps}
+      ></input>
 
-      <Button onClick={onSubmit}>Submit Character</Button>
-      <CancelButton href={"/characters/list"}>Cancel</CancelButton>
-    </Wrapper>
+      <button className={style["btn-primary"]} onClick={onSubmit}>
+        Submit Character
+      </button>
+      <button className={style["btn-danger"]} href={"/characters/list"}>
+        Cancel
+      </button>
+    </div>
   );
 };
 

@@ -21,7 +21,11 @@ const DeleteLink = ({ id }) => {
     [id]
   );
 
-  return <div className={style['delete-link']} onClick={handleDelete}>Delete</div>;
+  return (
+    <div className={style["delete-link"]} onClick={handleDelete}>
+      Delete
+    </div>
+  );
 };
 
 export default DeleteLink;
