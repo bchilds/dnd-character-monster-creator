@@ -1,8 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useTable } from "react-table";
+import classnames from "classnames";
 import style from "./style.module.scss";
 
-function PreformattedTable({ columns, data }) {
+function PreformattedTable({ columns, data, classNames }) {
   // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,
@@ -17,7 +19,7 @@ function PreformattedTable({ columns, data }) {
 
   // Render the UI for your table
   return (
-    <div className={style["table-wrapper"]}>
+    <div className={classnames(style["table-wrapper"], classNames)}>
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -46,5 +48,17 @@ function PreformattedTable({ columns, data }) {
     </div>
   );
 }
+
+PreformattedTable.propTypes = {
+  classNames: PropTypes.string,
+  data: PropTypes.array,
+  columns: PropTypes.array,
+};
+
+PreformattedTable.defaultProps = {
+  classNames: "",
+  data: null,
+  columns: null,
+};
 
 export default PreformattedTable;
