@@ -6,6 +6,9 @@ import { getAllCharacters } from "../../../src/api/character/api";
 import UpdateLink from "./update-link";
 import DeleteLink from "./delete-link";
 
+// TODO -- build own table, possibly using react table for logical bits
+// but really, fuck tables.
+
 const Empty = () => (
   <div className="empty">
     <h2>You have no characters! Go make some!</h2>

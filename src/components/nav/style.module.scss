@@ -1,6 +1,7 @@
-// TODO -- import from colors file
+@import 'src/sass/_colors.scss';
+
 .navbar {
-  background-color: #343a40;
+  background-color: $dark-background-primary;
   margin-bottom: 20px;
   display: flex;
     flex-wrap: wrap;
