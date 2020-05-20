@@ -1,1 +1,13 @@
-$dark-background-primary: #343a40;
+// backgrounds
+$darkBackgroundPrimary: #343a40;
+
+// fonts
+$font-white: #FFFEF7;
+
+// accents
+$lolGrey: #666;
+
+@mixin applyStandardBackgroundAndFont() {
+  color: black;
+  background: white;
+}

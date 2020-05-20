@@ -1,7 +1,10 @@
+@import '../../../src/sass/colors';
+
 .table-wrapper {
   table {
+    @include applyStandardBackgroundAndFont();
     border-spacing: 0;
-    border: 1px solid black;
+    border: 1px solid $lolGrey;
 
     tr {
       :last-child {
@@ -15,8 +18,8 @@
     td {
       margin: 0;
       padding: 0.5rem;
-      border-bottom: 1px solid black;
-      border-right: 1px solid black;
+      border-bottom: 1px solid $lolGrey;
+      border-right: 1px solid $lolGrey;
 
       :last-child {
         border-right: 0;

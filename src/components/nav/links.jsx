@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import style from "./style.module.scss";
 
 // TODO -- styles and classnames for divs
 
@@ -8,19 +9,11 @@ const Links = () => (
     <Link to="/" className="navbar-brand">
       Character Management
     </Link>
-    <div>
-      <div>
-        <div>
-          <Link to="/characters/div" className="nav-link">
-            List Characters
-          </Link>
-        </div>
-        <div>
-          <Link to="/characters/create" className="nav-link">
-            Create Character
-          </Link>
-        </div>
-      </div>
+    <div className={style["nav-links"]}>
+      <Link to="/characters/list">List Characters</Link>
+      <Link to="/characters/create">
+        Create Character
+      </Link>
     </div>
   </>
 );

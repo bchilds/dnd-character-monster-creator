@@ -1,11 +1,30 @@
-@import 'src/sass/_colors.scss';
+@import "src/sass/_colors.scss";
 
 .navbar {
-  background-color: $dark-background-primary;
-  margin-bottom: 20px;
+  background-color: $darkBackgroundPrimary;
+  margin: 0 10% 20px 10%;
   display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    padding: .5rem 1rem;
+  flex-direction: column;
+  width: 80%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.logo-wrapper {
+  a {
+    color: $font-white;
+    text-decoration: none;
+    font-size: 8px;
+
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.nav-links {
+  a {
+    color: $font-white;
+    text-decoration: none;
+  }
 }
