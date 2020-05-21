@@ -1,14 +1,24 @@
 @import "src/sass/_colors.scss";
 
+.nav-links-container {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px 0;
+      display: flex;
+    flex-direction: column;
+    align-items: center;
+  background: $darkBackgroundSecondary;
+}
+
 .navbar {
+  width: 100%;
   background-color: $darkBackgroundPrimary;
-  margin: 0 10% 20px 10%;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  width: 80%;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0;
 }
 
 .logo-wrapper {
@@ -23,8 +33,14 @@
 }
 
 .nav-links {
-  a {
-    color: $font-white;
-    text-decoration: none;
-  }
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-link {
+  color: $font-white;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid white;
+  border-radius: 5px;
 }

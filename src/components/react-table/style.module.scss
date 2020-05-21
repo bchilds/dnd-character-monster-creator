@@ -3,6 +3,7 @@
 .table-wrapper {
   table {
     @include applyStandardBackgroundAndFont();
+
     border-spacing: 0;
     border: 1px solid $lolGrey;
 
