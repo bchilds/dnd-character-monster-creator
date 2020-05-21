@@ -4,7 +4,7 @@ import Links from './links';
 import style from './style.module.scss';
 
 const NavBar = () => (
-  <div class={style.navbar}>
+  <div className={style.navbar}>
     <Logo />
     <Links />
   </div>
