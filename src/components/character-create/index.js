@@ -1,5 +1,7 @@
 import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
+import { useHistory } from "react-router-dom";
+
 import style from "./style.module.scss";
 
 import {
@@ -16,6 +18,7 @@ const useInput = (fieldName, initialValue) => {
 };
 
 const CharacterCreate = ({ existingCharacter }) => {
+  const history = useHistory();
   const nameProps = useInput("name", existingCharacter?.name || "Name Here");
   const raceProps = useInput("race", existingCharacter?.race || "");
   const levelProps = useInput("level", existingCharacter?.level || 1);
@@ -24,6 +27,15 @@ const CharacterCreate = ({ existingCharacter }) => {
     existingCharacter?.characterClass || ""
   );
   const subclassProps = useInput("subclass", existingCharacter?.subclass || "");
+
+  const onResetChanges = useCallback(() => {
+    const resetToInitial = (value) => ({ target: { value } });
+    nameProps.onChange(resetToInitial(nameProps.value));
+    raceProps.onChange(resetToInitial(raceProps.value));
+    levelProps.onChange(resetToInitial(levelProps.value));
+    characterClassProps.onChange(resetToInitial(characterClassProps.value));
+    subclassProps.onChange(resetToInitial(subclassProps.value));
+  }, []);
 
   const onSubmit = useCallback(() => {
     const doesCharacterExist = !!existingCharacter;
@@ -49,6 +61,7 @@ const CharacterCreate = ({ existingCharacter }) => {
     subclassProps.value,
   ]);
 
+  // redo as grid, not flexbox
   return (
     <div className={style["form"]}>
       <h1>
@@ -92,7 +105,8 @@ const CharacterCreate = ({ existingCharacter }) => {
 
       <div className={style["action-row"]}>
         <button onClick={onSubmit}>Submit Character</button>
-        <button href={"/characters/list"}>Cancel</button>
+        <button onClick={onResetChanges}> Reset Changes</button>
+        <button onClick={history.goBack}>Cancel</button>
       </div>
     </div>
   );

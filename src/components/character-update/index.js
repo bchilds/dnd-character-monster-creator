@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import CharacterCreate from "../character-create";
 import { getCharacterById } from "../../../src/api/character/api";
+import { useParams } from "react-router-dom";
 
-const CharacterUpdate = (routerProps) => {
+const CharacterUpdate = () => {
   const [character, setCharacter] = useState(null);
-  const id = routerProps.match.params.id;
+  const { id } = useParams();
   useEffect(() => {
     getCharacterById(id)
       .then((res) => {
