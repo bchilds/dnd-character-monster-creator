@@ -1,21 +1,38 @@
-// TODO import common button styles for btn-primary and btn-danger
+@import "src/sass/_base.scss";
 
-label {
-  margin: 5px;
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  margin: auto;
+
+  .form-section {
+    margin: 5px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    label {
+      margin: 5px;
+      width: 30%;
+      text-align: end;
+    }
+
+    .form-control {
+      width: auto;
+      margin-left: 5px;
+    }
+  }
 }
 
-.form-group {
-  margin: 0 30px;
-}
+.action-row {
+  @extend %actionRow;
 
-.form-control {
-  margin: 5px;
-}
-
-.btn-primary {
-  margin: 15px 15px 15px 5px;
-}
-
-.btn-danger {
-  margin: 15px 15px 15px 5px;
+  button {
+    font-size: 1.05em;
+    min-width: 100px;
+  }
 }

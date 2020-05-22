@@ -50,50 +50,50 @@ const CharacterCreate = ({ existingCharacter }) => {
   ]);
 
   return (
-    <div className={style["form-group"]}>
+    <div className={style["form"]}>
       <h1>
         {!!existingCharacter ? `Edit ${nameProps.value}` : "Create A Character"}
       </h1>
-      <label className={style["delete-link"]}>Character Name: </label>
-      <input
-        className={style["form-control"]}
-        type="text"
-        {...nameProps}
-      ></input>
-      <label>Race: </label>
-      <input
-        className={style["form-control"]}
-        type="text"
-        {...raceProps}
-      ></input>
-      <label>Level: </label>
-      <input
-        className={style["form-control"]}
-        type="number"
-        step="1"
-        min="1"
-        pattern="[0-9]+([,\.][0-9]+)?"
-        {...levelProps}
-      ></input>
-      <label>Class: </label>
-      <input
-        className={style["form-control"]}
-        type="text"
-        {...characterClassProps}
-      ></input>
-      <label>Subclass (Archetype): </label>
-      <input
-        className={style["form-control"]}
-        type="text"
-        {...subclassProps}
-      ></input>
+      <div className={style["form-section"]}>
+        <label className={style["delete-link"]}>Character Name: </label>
+        <input className={style["form-control"]} type="text" {...nameProps} />
+      </div>
+      <div className={style["form-section"]}>
+        <label>Race: </label>
+        <input className={style["form-control"]} type="text" {...raceProps} />
+      </div>
+      <div className={style["form-section"]}>
+        <label>Level: </label>
+        <input
+          className={style["form-control"]}
+          type="number"
+          step="1"
+          min="1"
+          pattern="[0-9]+([,\.][0-9]+)?"
+          {...levelProps}
+        />
+      </div>
+      <div className={style["form-section"]}>
+        <label>Class: </label>
+        <input
+          className={style["form-control"]}
+          type="text"
+          {...characterClassProps}
+        />
+      </div>
+      <div className={style["form-section"]}>
+        <label>Subclass (Archetype): </label>
+        <input
+          className={style["form-control"]}
+          type="text"
+          {...subclassProps}
+        />
+      </div>
 
-      <button className={style["btn-primary"]} onClick={onSubmit}>
-        Submit Character
-      </button>
-      <button className={style["btn-danger"]} href={"/characters/list"}>
-        Cancel
-      </button>
+      <div className={style["action-row"]}>
+        <button onClick={onSubmit}>Submit Character</button>
+        <button href={"/characters/list"}>Cancel</button>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,19 @@
+@import "src/sass/_colors.scss";
+
+@mixin applyStandardHover() {
+  color: $fontWhite;
+  background: $hoverBlue;
+  border-color: $lightBlue;
+}
+
+// %genericButton {
+
+// }
+
+// %buttonPrimary {
+
+// }
+
+// %buttonDanger {
+
+// }

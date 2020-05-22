@@ -76,8 +76,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "format": "prettier --write \"**/*.{js,json,yaml}\"",
-    "format-check": "prettier --check \"**/*.{js,json,yaml}\""
+    "format": "prettier --write \"**/*.{scss,js,json,yaml}\"",
+    "format-check": "prettier --check \"**/*.{scss,js,json,yaml}\""
   },
   "eslintConfig": {
     "extends": "react-app"

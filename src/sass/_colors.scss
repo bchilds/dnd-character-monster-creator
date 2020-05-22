@@ -1,11 +1,14 @@
 // backgrounds
 $darkBackgroundPrimary: #343a40;
-$darkBackgroundSecondary: #707D8A;
+$darkBackgroundSecondary: #707d8a;
+
 // fonts
-$font-white: #FFFEF7;
+$fontWhite: #fffef7;
 
 // accents
 $lolGrey: #666;
+$hoverBlue: rgb(50, 103, 201);
+$lightBlue: rgb(50, 128, 201);
 
 @mixin applyStandardBackgroundAndFont() {
   color: black;

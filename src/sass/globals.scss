@@ -1,7 +1,11 @@
-@import 'colors';
+@import "colors";
 
 body {
   background: $darkBackgroundPrimary;
-  color: $font-white;
+  color: $fontWhite;
   margin: 10px 0;
+}
+
+input {
+  font-size: 14px;
 }

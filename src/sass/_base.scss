@@ -1,0 +1,19 @@
+@import "src/sass/_colors.scss";
+@import "src/sass/_buttons.scss";
+
+%actionRow {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  button {
+    padding: 5px 10px;
+    border-radius: 10px;
+
+    &:hover {
+      @include applyStandardHover();
+    }
+  }
+}
