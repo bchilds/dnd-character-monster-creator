@@ -106,10 +106,10 @@ const CharacterCreate = ({ existingCharacter }) => {
 
       <div className={style["action-row"]}>
         <Button variant="contained" color="primary" onClick={onSubmit}>
-          Submit Character
+          Submit
         </Button>
         <Button variant="contained" color="primary" onClick={onResetChanges}>
-          Reset Changes
+          Reset
         </Button>
         <Button variant="contained" color="primary" onClick={history.goBack}>
           Cancel
