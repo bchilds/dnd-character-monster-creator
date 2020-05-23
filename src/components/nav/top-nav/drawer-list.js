@@ -1,18 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Button from "@material-ui/core/button";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
+import React from "react";
+import PropTypes from "prop-types";
 
-const DrawerList = ({ anchor }) => {
+import { MENU_OPTION_MAP } from "./constants";
 
+import style from "./style.module.scss";
+
+const DrawerList = ({ topLevelMenuOption, toggleDrawer, location }) => {
+  const Option = MENU_OPTION_MAP[topLevelMenuOption];
+  return (
+    <div
+      className={style.list}
+      role="presentation"
+      onClick={toggleDrawer(topLevelMenuOption, false)} // executeoptionAction as well
+      onKeyDown={toggleDrawer(topLevelMenuOption, false)} // executeoptionAction as well
+    >
+      <Option location={location} />
+    </div>
+  );
 };
 
 DrawerList.propTypes = {
-  anchor: PropTypes.string.isRequired,
+  topLevelMenuOption: PropTypes.string.isRequired,
+  toggleDrawer: PropTypes.func.isRequired,
+  location: PropTypes.string.isRequired,
 };
 
 export default DrawerList;

@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
-import Button from "@material-ui/core/Button";
+import { Button } from "@material-ui/core";
 
 import style from "./style.module.scss";
 
@@ -36,6 +36,7 @@ const CharacterCreate = ({ existingCharacter }) => {
     levelProps.onChange(resetToInitial(levelProps.value));
     characterClassProps.onChange(resetToInitial(characterClassProps.value));
     subclassProps.onChange(resetToInitial(subclassProps.value));
+    //eslint-disable-next-line
   }, []);
 
   const onSubmit = useCallback(() => {

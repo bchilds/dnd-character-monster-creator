@@ -88,3 +88,11 @@
     @include invertColors();
   }
 }
+
+.list {
+  width: 250px;
+}
+
+.paper-overrides {
+  background: $darkBackgroundSecondary;
+}

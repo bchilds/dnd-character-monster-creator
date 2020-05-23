@@ -89,10 +89,10 @@ const CharacterList = () => {
       });
   }, [setLoading, setCharacters]);
 
-  console.log(
-    `CharacterList --> isLoading: ${isLoading} --> render --> characters`,
-    characters
-  );
+  // console.log(
+  //   `CharacterList --> isLoading: ${isLoading} --> render --> characters`,
+  //   characters
+  // );
 
   const isEmptyAndNotLoading = !isLoading && characters.length === 0;
 
