@@ -36,26 +36,6 @@ const createCharacter = (req, res) => {
     });
 };
 
-// const findCharacter = async (_id) => {
-//   Character.findOne({ _id }, (err, character) => {
-//   if (err) {
-//     return res.status(400).json({
-//       err,
-//       message: "Character not found!",
-//     });
-//   }
-
-//   if (!character) {
-//     return res.status(404).json({
-//       err,
-//       message: "Character not found!",
-//     });
-//   }
-
-//   return character;
-// });
-// }
-
 const updateCharacter = async (req, res) => {
   const { body } = req;
 
@@ -143,11 +123,11 @@ const getAllCharacters = async (req, res) => {
       });
     }
 
-    if (!characters.length) {
-      return res
-        .status(404)
-        .json({ success: false, error: `Characters not found` });
-    }
+    // if (!characters.length) {
+    //   return res
+    //     .status(404)
+    //     .json({ success: false, error: `Characters not found` });
+    // }
 
     return res.status(200).json({ success: true, data: characters });
   });

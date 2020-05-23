@@ -22,7 +22,7 @@ const reducer = (acc, curr) => {
   return acc;
 };
 const Drawer = () => {
-  const [selected, setSelected] = useState(MENU_OPTIONS[0]);
+  const [selected, setSelected] = useState(MENU_OPTIONS[0]); // convert to have this be route-based and not state-based
   const [menuState, setMenuState] = useState(MENU_OPTIONS.reduce(reducer, {}));
   const location = useLocation().pathname;
 
