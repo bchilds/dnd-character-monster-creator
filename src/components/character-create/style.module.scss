@@ -30,13 +30,12 @@
 
 .action-row {
   @extend %actionRow;
+  width: 50%; // specific to this form
 
   button {
-    font-size: 1.05em;
-    min-width: 100px;
-
-    &:focus {
-      border-radius: 15px;
-    }
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 35px;
+    border-top-right-radius: 15px;
   }
 }

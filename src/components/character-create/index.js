@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 import style from "./style.module.scss";
 
@@ -104,9 +105,15 @@ const CharacterCreate = ({ existingCharacter }) => {
       </div>
 
       <div className={style["action-row"]}>
-        <button onClick={onSubmit}>Submit Character</button>
-        <button onClick={onResetChanges}> Reset Changes</button>
-        <button onClick={history.goBack}>Cancel</button>
+        <Button variant="contained" color="primary" onClick={onSubmit}>
+          Submit Character
+        </Button>
+        <Button variant="contained" color="primary" onClick={onResetChanges}>
+          Reset Changes
+        </Button>
+        <Button variant="contained" color="primary" onClick={history.goBack}>
+          Cancel
+        </Button>
       </div>
     </div>
   );
