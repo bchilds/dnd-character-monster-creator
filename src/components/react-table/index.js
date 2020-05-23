@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useTable } from "react-table";
-import classnames from "classnames";
+import clsx from "clsx";
 import style from "./style.module.scss";
 
 function PreformattedTable({ columns, data, classNames }) {
@@ -19,7 +19,7 @@ function PreformattedTable({ columns, data, classNames }) {
 
   // Render the UI for your table
   return (
-    <div className={classnames(style["table-wrapper"], classNames)}>
+    <div className={clsx(style["table-wrapper"], classNames)}>
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CharacterCreate from "../character-create";
-import { getCharacterById } from "../../../src/api/character/api";
+import { getCharacterById } from "../../api/character/api";
 import { useParams } from "react-router-dom";
 
 const CharacterUpdate = () => {

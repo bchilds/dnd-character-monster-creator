@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from "react";
-import PreformattedTable from "../../../src/components/react-table";
+import PreformattedTable from "../react-table";
 import style from "./style.module.scss";
 
-import { getAllCharacters } from "../../../src/api/character/api";
+import { getAllCharacters } from "../../api/character/api";
 import UpdateLink from "./update-link";
 import DeleteLink from "./delete-link";
 

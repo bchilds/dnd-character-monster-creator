@@ -8,7 +8,7 @@ import style from "./style.module.scss";
 import {
   createNewCharacter,
   editCharacterAttributesById,
-} from "../../../src/api/character/api";
+} from "../../api/character/api";
 
 const useInput = (fieldName, initialValue) => {
   const [value, setValue] = useState(initialValue);
