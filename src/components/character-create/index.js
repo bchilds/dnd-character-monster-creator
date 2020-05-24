@@ -108,17 +108,31 @@ const CharacterCreate = ({ existingCharacter }) => {
         </div>
       </div>
 
-      <div className="form-column">
-      </div>
+      <div className="form-column"></div>
 
       <div className={style["action-row"]}>
-        <Button variant="contained" color="primary" onClick={onSubmit}>
+        <Button
+          variant="contained"
+          size="medium"
+          color="primary"
+          onClick={onSubmit}
+        >
           Submit
         </Button>
-        <Button variant="contained" color="primary" onClick={onResetChanges}>
+        <Button
+          variant="contained"
+          size="medium"
+          color="primary"
+          onClick={onResetChanges}
+        >
           Reset
         </Button>
-        <Button variant="contained" color="primary" onClick={history.goBack}>
+        <Button
+          variant="contained"
+          size="medium"
+          color="primary"
+          onClick={history.goBack}
+        >
           Cancel
         </Button>
       </div>

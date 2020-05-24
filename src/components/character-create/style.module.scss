@@ -32,6 +32,11 @@
   @extend %actionRow;
   width: 50%; // specific to this form
 
+  > button {
+    width: 100%;
+    flex-grow: 1;
+    margin: 0 5%;
+  }
   // lol
   // button {
   //   border-top-left-radius: 25px;
