@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from "react";
-import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 import { Button } from "@material-ui/core";
 
+import Character from "../../props/character";
 import style from "./style.module.scss";
 
 import {
@@ -69,40 +69,46 @@ const CharacterCreate = ({ existingCharacter }) => {
       <h1>
         {!!existingCharacter ? `Edit ${nameProps.value}` : "Create A Character"}
       </h1>
-      <div className={style["form-section"]}>
-        <label className={style["delete-link"]}>Character Name: </label>
-        <input className={style["form-control"]} type="text" {...nameProps} />
+
+      <div className="form-column">
+        <div className={style["form-section"]}>
+          <label className={style["delete-link"]}>Character Name: </label>
+          <input className={style["form-control"]} type="text" {...nameProps} />
+        </div>
+        <div className={style["form-section"]}>
+          <label>Race: </label>
+          <input className={style["form-control"]} type="text" {...raceProps} />
+        </div>
+        <div className={style["form-section"]}>
+          <label>Level: </label>
+          <input
+            className={style["form-control"]}
+            type="number"
+            step="1"
+            min="1"
+            pattern="[0-9]+([,\.][0-9]+)?"
+            {...levelProps}
+          />
+        </div>
+        <div className={style["form-section"]}>
+          <label>Class: </label>
+          <input
+            className={style["form-control"]}
+            type="text"
+            {...characterClassProps}
+          />
+        </div>
+        <div className={style["form-section"]}>
+          <label>Subclass (Archetype): </label>
+          <input
+            className={style["form-control"]}
+            type="text"
+            {...subclassProps}
+          />
+        </div>
       </div>
-      <div className={style["form-section"]}>
-        <label>Race: </label>
-        <input className={style["form-control"]} type="text" {...raceProps} />
-      </div>
-      <div className={style["form-section"]}>
-        <label>Level: </label>
-        <input
-          className={style["form-control"]}
-          type="number"
-          step="1"
-          min="1"
-          pattern="[0-9]+([,\.][0-9]+)?"
-          {...levelProps}
-        />
-      </div>
-      <div className={style["form-section"]}>
-        <label>Class: </label>
-        <input
-          className={style["form-control"]}
-          type="text"
-          {...characterClassProps}
-        />
-      </div>
-      <div className={style["form-section"]}>
-        <label>Subclass (Archetype): </label>
-        <input
-          className={style["form-control"]}
-          type="text"
-          {...subclassProps}
-        />
+
+      <div className="form-column">
       </div>
 
       <div className={style["action-row"]}>
@@ -121,15 +127,7 @@ const CharacterCreate = ({ existingCharacter }) => {
 };
 
 CharacterCreate.propTypes = {
-  existingCharacter: PropTypes.shape({
-    _id: PropTypes.string,
-    name: PropTypes.string,
-    level: PropTypes.number,
-    race: PropTypes.string,
-    characterClass: PropTypes.string,
-    subclass: PropTypes.string,
-    // ...rest of model, extract this to its own file
-  }),
+  existingCharacter: Character,
 };
 
 CharacterCreate.defaultProps = {

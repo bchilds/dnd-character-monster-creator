@@ -1,0 +1,1 @@
+export const getModifier = (stat) => Math.floor(stat - 10) / 2;
