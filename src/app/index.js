@@ -15,7 +15,7 @@ function App() {
           component={Pages.CharacterCreate}
         />
         <Route
-          path="/character/update/:id/"
+          path="/characters/update/:id/"
           exact
           component={Pages.CharacterUpdate}
         />

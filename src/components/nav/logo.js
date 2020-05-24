@@ -1,6 +1,6 @@
 // By Dungeons & Dragons, Fair use, https://en.wikipedia.org/w/index.php?curid=51501539
 import React from "react";
-import logo from "../../../images/dnd_5e_logo_opt.svg";
+import logo from "../../images/dnd_5e_logo_opt.svg";
 import style from "./style.module.scss";
 
 // TODO - make title nav to home
