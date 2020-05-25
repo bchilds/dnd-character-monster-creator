@@ -2,10 +2,12 @@ import React, { useState, useCallback } from "react";
 import { CharacterProvider } from "../../../src/contexts/character-list";
 import { getAllCharacters } from "../../api/character/api";
 import { emptyArray } from "../../defaults/empty";
+import { useMountedState } from "../../../src/helpers/use-mounted-state";
 
 const CharacterListWrapper = ({ children }) => {
   const [isLoadingCharacters, setLoadingCharacters] = useState(false);
   const [characters, setCharacters] = useState(emptyArray);
+  const isMounted = useMountedState();
 
   const setCharacterById = useCallback(
     (id, characterToSet) => {
@@ -27,25 +29,25 @@ const CharacterListWrapper = ({ children }) => {
 
   const setAllCharacters = useCallback(
     (newCharacters) => {
-      setCharacters(newCharacters);
+      isMounted.current && setCharacters(newCharacters);
     },
-    [setCharacters]
+    [isMounted, setCharacters]
   );
 
   // below is not handled correctly when used in this way, can cause memory leak
   // "correct" solution is probably to remove API call from context
-  const fetchAndSetAllCharacters = useCallback(async () => {
-    setLoadingCharacters(true);
+  const fetchAllCharacters = useCallback(async () => {
+    isMounted.current && setLoadingCharacters(true);
     try {
       const res = await getAllCharacters();
-      const chars = res.data.data || [];
-      setCharacters(chars);
-      setLoadingCharacters(false);
-    } catch (err) {
-      console.error(err);
-      setLoadingCharacters(false);
+      isMounted.current && setLoadingCharacters(false);
+      return res.data.data || [];
     }
-  }, [setLoadingCharacters, setCharacters]);
+    catch (err) {
+      console.error(err);
+      isMounted.current && setLoadingCharacters(false);
+    }
+  }, [isMounted, setLoadingCharacters]);
 
   const deleteCharacterById = useCallback(
     (id) => {
@@ -67,7 +69,7 @@ const CharacterListWrapper = ({ children }) => {
     isLoadingCharacters,
     setCharacterById,
     setAllCharacters,
-    fetchAndSetAllCharacters,
+    fetchAllCharacters,
     deleteCharacterById,
   };
 

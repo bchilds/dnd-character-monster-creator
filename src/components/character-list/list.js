@@ -72,21 +72,27 @@ const getDefaultColumns = () => [
 
 const CharacterList = () => {
   const context = useContext(CharacterContext);
-  const { characters, isLoadingCharacters, fetchAndSetAllCharacters } = context;
+  const {
+    characters = [],
+    isLoadingCharacters,
+    fetchAllCharacters,
+    setAllCharacters,
+  } = context;
   const tableColumns = useMemo(getDefaultColumns);
 
-  // likely need to add API call back in here to fetch due to memory leak
   useEffect(() => {
-    fetchAndSetAllCharacters();
-  }, [fetchAndSetAllCharacters]);
-  const isEmptyAndNotLoading = !isLoadingCharacters && characters.length === 0;
-
-  if (isEmptyAndNotLoading) {
-    return Empty();
-  }
+    if (fetchAllCharacters) {
+      fetchAllCharacters().then((characters) => {
+        setAllCharacters && setAllCharacters(characters);
+      });
+    }
+  }, [setAllCharacters, fetchAllCharacters]);
 
   if (isLoadingCharacters) {
     return <div>Loading...</div>;
+  }
+  if (characters.length === 0) {
+    return Empty();
   }
 
   return (

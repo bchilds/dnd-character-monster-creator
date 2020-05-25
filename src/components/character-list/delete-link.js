@@ -15,13 +15,13 @@ const DeleteLink = ({ id }) => {
       deleteCharacter(id)
         .then((response) => {
           // celebrate
-          deleteCharacterById(id);
+          deleteCharacterById && deleteCharacterById(id);
         })
         .catch((error) => {
           console.error(`Error deleting charId: ${id}: `, error);
         });
     },
-    [id]
+    [id, deleteCharacterById]
   );
 
   return (
