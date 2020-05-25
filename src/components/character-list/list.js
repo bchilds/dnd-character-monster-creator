@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useContext } from "react";
 import PreformattedTable from "../react-table";
 
-import { getAllCharacters } from "../../api/character/api";
+import CharacterContext from "../../../src/contexts/character-list";
 import UpdateLink from "./update-link";
 import DeleteLink from "./delete-link";
 
@@ -71,36 +71,22 @@ const getDefaultColumns = () => [
 ];
 
 const CharacterList = () => {
-  const [isLoading, setLoading] = useState(true);
-  const [characters, setCharacters] = useState([]);
+  const context = useContext(CharacterContext);
+  const { characters, isLoadingCharacters, fetchAndSetAllCharacters } = context;
   const tableColumns = useMemo(getDefaultColumns);
 
   useEffect(() => {
-    setLoading(true);
-    getAllCharacters()
-      .then((res) => {
-        const chars = res.data.data || [];
-        setCharacters(chars);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setLoading(false);
-      });
-  }, [setLoading, setCharacters]);
-
-  // console.log(
-  //   `CharacterList --> isLoading: ${isLoading} --> render --> characters`,
-  //   characters
-  // );
-
-  const isEmptyAndNotLoading = !isLoading && characters.length === 0;
+    let isSubscribed = true;
+    fetchAndSetAllCharacters(isSubscribed);
+    return () => { isSubscribed = false };
+  }, [fetchAndSetAllCharacters]);
+  const isEmptyAndNotLoading = !isLoadingCharacters && characters.length === 0;
 
   if (isEmptyAndNotLoading) {
     return Empty();
   }
 
-  if (isLoading) {
+  if (isLoadingCharacters) {
     return <div>Loading...</div>;
   }
 

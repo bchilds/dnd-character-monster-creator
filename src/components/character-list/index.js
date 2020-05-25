@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Wrapper from './wrapper';
+import CharacterListWrapper from './wrapper';
 import CharacterList from './list';
 
 const WrappedCharacterList = () => (
-  <Wrapper>
+  <CharacterListWrapper>
     <CharacterList />
-  </Wrapper>
+  </CharacterListWrapper>
 );
 
 export default WrappedCharacterList;

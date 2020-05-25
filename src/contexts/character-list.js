@@ -3,6 +3,7 @@ import { emptyArray } from "../defaults/empty";
 
 const CharacterListContext = createContext({
   characters: emptyArray,
+  isLoadingCharacters: false,
   setCharacterById: undefined,
   setAllCharacters: undefined,
   fetchAndSetAllCharacters: undefined,
