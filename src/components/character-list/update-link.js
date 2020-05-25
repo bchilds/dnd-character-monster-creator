@@ -1,11 +1,14 @@
 import React, { useCallback } from "react";
+
+import { getUpdateCharacterUrlById } from '../../../src/app/routing-helpers';
+
 import style from "./style.module.scss";
 
 const UpdateLink = ({ id }) => {
   const handleUpdate = useCallback(
     (e) => {
       e.preventDefault();
-      window.location.href = `/character/update/${id}`;
+      window.location.href = getUpdateCharacterUrlById(id);
     },
     [id]
   );

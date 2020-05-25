@@ -81,11 +81,10 @@ const CharacterList = () => {
   const tableColumns = useMemo(getDefaultColumns);
 
   useEffect(() => {
-    if (fetchAllCharacters) {
+    fetchAllCharacters &&
       fetchAllCharacters().then((characters) => {
         setAllCharacters && setAllCharacters(characters);
       });
-    }
   }, [setAllCharacters, fetchAllCharacters]);
 
   if (isLoadingCharacters) {
