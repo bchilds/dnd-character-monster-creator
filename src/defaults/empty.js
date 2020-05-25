@@ -1,2 +1,2 @@
-export const emptyObj = {};
+export const emptyObject = {};
 export const emptyArray = [];
