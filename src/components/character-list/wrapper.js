@@ -8,10 +8,9 @@ const CharacterListWrapper = ({ children }) => {
   const [characters, setCharacters] = useState(emptyArray);
 
   const setCharacterById = useCallback(
-    (characterToSet) => {
-      const { _id } = characterToSet;
-      const foundCharacterIndex = characters.indexOf(
-        (char) => char._id === _id
+    (id, characterToSet) => {
+      const foundCharacterIndex = characters.findIndex(
+        (char) => char._id === id
       );
       if (foundCharacterIndex < 0) {
         setCharacters([...characters, characterToSet]);
@@ -33,30 +32,34 @@ const CharacterListWrapper = ({ children }) => {
     [setCharacters]
   );
 
-  const fetchAndSetAllCharacters = useCallback(
-    async (isSubscribed) => {
-      if (!isSubscribed) {
-        console.log('Stopping point')
-      }
-      if (isSubscribed) {
-        setLoadingCharacters(true);
-      }
-      try {
-        const res = await getAllCharacters();
-        debugger;
-        const chars = res.data.data || [];
-        if (isSubscribed) {
-          setCharacters(chars);
-          setLoadingCharacters(false);
-        }
-      } catch (err) {
-        console.error(err);
-        if (isSubscribed) {
-          setLoadingCharacters(false);
-        }
+  // below is not handled correctly when used in this way, can cause memory leak
+  // "correct" solution is probably to remove API call from context
+  const fetchAndSetAllCharacters = useCallback(async () => {
+    setLoadingCharacters(true);
+    try {
+      const res = await getAllCharacters();
+      const chars = res.data.data || [];
+      setCharacters(chars);
+      setLoadingCharacters(false);
+    } catch (err) {
+      console.error(err);
+      setLoadingCharacters(false);
+    }
+  }, [setLoadingCharacters, setCharacters]);
+
+  const deleteCharacterById = useCallback(
+    (id) => {
+      const foundCharacterIndex = characters.findIndex(
+        (char) => char._id === id
+      );
+      if (foundCharacterIndex >= 0) {
+        setCharacters([
+          ...characters.slice(0, foundCharacterIndex),
+          ...characters.slice(foundCharacterIndex + 1),
+        ]);
       }
     },
-    [setLoadingCharacters, setCharacters]
+    [characters, setCharacters]
   );
 
   const value = {
@@ -65,6 +68,7 @@ const CharacterListWrapper = ({ children }) => {
     setCharacterById,
     setAllCharacters,
     fetchAndSetAllCharacters,
+    deleteCharacterById,
   };
 
   return <CharacterProvider value={value}>{children}</CharacterProvider>;

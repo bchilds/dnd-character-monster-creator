@@ -1,8 +1,11 @@
-import React, { useCallback } from "react";
-import style from "./style.module.scss";
+import React, { useCallback, useContext } from "react";
 import { deleteCharacter } from "../../api/character/api";
+import CharacterContext from "../../../src/contexts/character-list";
 
+import style from "./style.module.scss";
 const DeleteLink = ({ id }) => {
+  const context = useContext(CharacterContext);
+  const { deleteCharacterById } = context;
   const handleDelete = useCallback(
     (e) => {
       if (!window.confirm(`Do you wish to delete ID: ${id} permanently?`)) {
@@ -12,7 +15,7 @@ const DeleteLink = ({ id }) => {
       deleteCharacter(id)
         .then((response) => {
           // celebrate
-          window.location.reload();
+          deleteCharacterById(id);
         })
         .catch((error) => {
           console.error(`Error deleting charId: ${id}: `, error);
