@@ -1,13 +1,12 @@
 import React, { useEffect, useMemo, useContext } from "react";
-import PreformattedTable from "../react-table";
+import CircleLoader from "react-spinners/CircleLoader";
 
+import PreformattedTable from "../react-table";
 import CharacterContext from "../../../src/contexts/character-list";
 import UpdateLink from "./update-link";
 import DeleteLink from "./delete-link";
 
 import style from "./style.module.scss";
-// TODO -- build own table, possibly using react table for logical bits
-// but really, fuck tables.
 
 const Empty = () => (
   <div className="empty">
@@ -88,7 +87,11 @@ const CharacterList = () => {
   }, [setAllCharacters, fetchAllCharacters]);
 
   if (isLoadingCharacters) {
-    return <div>Loading...</div>;
+    return (
+      <div className={style["preformatted-table"]}>
+        <CircleLoader size={75} color="#D3212D" />
+      </div>
+    );
   }
   if (characters.length === 0) {
     return Empty();
