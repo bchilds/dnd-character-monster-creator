@@ -52,8 +52,10 @@ const CharacterCreate = ({ existingCharacter }) => {
     // validation
 
     doesCharacterExist
-      ? editCharacterAttributesById(existingCharacter._id, body)
-      : createNewCharacter(body);
+      ? editCharacterAttributesById(existingCharacter._id, body).then(
+          onResetChanges
+        )
+      : createNewCharacter(body).then(onResetChanges);
   }, [
     existingCharacter,
     nameProps.value,
@@ -61,6 +63,7 @@ const CharacterCreate = ({ existingCharacter }) => {
     levelProps.value,
     characterClassProps.value,
     subclassProps.value,
+    onResetChanges,
   ]);
 
   // redo as grid, not flexbox
@@ -133,7 +136,7 @@ const CharacterCreate = ({ existingCharacter }) => {
           color="primary"
           onClick={history.goBack}
         >
-          Cancel
+          Go Back
         </Button>
       </div>
     </div>
