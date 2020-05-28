@@ -1,40 +1,40 @@
 import { createContext } from "react";
-import { noop } from "../defaults/noop";
-import { emptyObj } from "../defaults/empty";
+import { emptyObject } from "../defaults/empty";
 import stats from "../helpers/stats";
 import defaultStrategy from "../defaults/point-strategy"
 
-const defaultNewCharacter = {
+export const generateDefaultNewCharacter = () => ({
+  _id: undefined,
   name: "Player",
   level: 1,
-  race: "SuperGnome",
-  characterClass: "Fighter",
+  race: "",
+  characterClass: "",
   subclass: "",
   feats: [],
   tools: [],
   languages: ["Common"],
   baseStats: { ...stats },
-  levelStats: emptyObj,
-  additionalStats: emptyObj
-};
+  levelStats: emptyObject,
+  additionalStats: emptyObject
+});
 
 const CharacterContext = createContext({
-  character: defaultNewCharacter,
+  character: emptyObject,
   selectedPointsStrategy: defaultStrategy,
   pointsRemaining: defaultStrategy.pointBudget,
   characterActions: {
-    setName: noop,
-    setLevel: noop,
-    setRace: noop,
-    setCharacterClass: noop,
-    setSubclass: noop,
-    setFeats: noop,
-    setBaseStat: noop,
-    setLevelStats: noop,
-    setAdditionalStats: noop,
+    setName: undefined,
+    setLevel: undefined,
+    setRace: undefined,
+    setCharacterClass: undefined,
+    setSubclass: undefined,
+    setFeats: undefined,
+    setBaseStat: undefined,
+    setLevelStats: undefined,
+    setAdditionalStats: undefined,
   },
-  setSelectedPointsStrategy: noop,
-  setPointsRemaining: noop,
+  setSelectedPointsStrategy: undefined,
+  setPointsRemaining: undefined,
 });
 export const CharacterProvider = CharacterContext.Provider;
 export const CharacterConsumer = CharacterContext.Consumer;

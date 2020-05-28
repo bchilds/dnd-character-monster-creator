@@ -11,6 +11,6 @@ const CharacterListContext = createContext({
 });
 CharacterListContext.displayName = 'CharacterListContext';
 
-export const CharacterProvider = CharacterListContext.Provider;
-export const CharacterConsumer = CharacterListContext.Consumer;
+export const CharacterListProvider = CharacterListContext.Provider;
+export const CharacterListConsumer = CharacterListContext.Consumer;
 export default CharacterListContext;

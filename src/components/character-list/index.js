@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import CharacterListWrapper from './wrapper';
-import CharacterList from './list';
+import CharacterListWrapper from "./wrapper";
+import CharacterList from "./list";
 
-const WrappedCharacterList = () => (
-  <CharacterListWrapper>
-    <CharacterList />
+const WrappedCharacterList = (props) => (
+  <CharacterListWrapper {...props} >
+    <CharacterList {...props} />
   </CharacterListWrapper>
 );
 

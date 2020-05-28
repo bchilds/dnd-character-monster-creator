@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { CharacterProvider } from "../../../src/contexts/character-list";
+import { CharacterListProvider } from "../../../src/contexts/character-list";
 import { getAllCharacters } from "../../api/character/api";
 import { emptyArray } from "../../defaults/empty";
 import { useMountedState } from "../../../src/helpers/use-mounted-state";
@@ -36,17 +36,17 @@ const CharacterListWrapper = ({ children }) => {
 
   // below is not handled correctly when used in this way, can cause memory leak
   // "correct" solution is probably to remove API call from context
-  const fetchAllCharacters = useCallback(async () => {
+  const fetchAllCharacters = useCallback(() => {
     isMounted.current && setLoadingCharacters(true);
-    try {
-      const res = await getAllCharacters();
-      isMounted.current && setLoadingCharacters(false);
-      return res.data.data || [];
-    }
-    catch (err) {
-      console.error(err);
-      isMounted.current && setLoadingCharacters(false);
-    }
+    return getAllCharacters()
+      .then((res) => {
+        isMounted.current && setLoadingCharacters(false);
+        return res.data.data || [];
+      })
+      .catch((err) => {
+        console.error(err);
+        isMounted.current && setLoadingCharacters(false);
+      });
   }, [isMounted, setLoadingCharacters]);
 
   const deleteCharacterById = useCallback(
@@ -73,7 +73,9 @@ const CharacterListWrapper = ({ children }) => {
     deleteCharacterById,
   };
 
-  return <CharacterProvider value={value}>{children}</CharacterProvider>;
+  return (
+    <CharacterListProvider value={value}>{children}</CharacterListProvider>
+  );
 };
 
 export default CharacterListWrapper;

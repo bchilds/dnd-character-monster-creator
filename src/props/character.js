@@ -15,7 +15,7 @@ export default PropTypes.shape({
   ),
   languages: PropTypes.arrayOf(PropTypes.string),
   tools: PropTypes.arrayOf(PropTypes.string),
-  stats: PropTypes.shape({
+  baseStats: PropTypes.shape({
     strength: PropTypes.number.isRequired,
     dexterity: PropTypes.number.isRequired,
     constitution: PropTypes.number.isRequired,
