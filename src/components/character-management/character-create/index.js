@@ -1,7 +1,7 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Button } from "@material-ui/core";
-
+import CharacterListContext from "../../../contexts/character-list";
 import { useInput } from "../../../hooks/use-input";
 import {
   CharacterProvider,
@@ -16,7 +16,9 @@ import {
   editCharacterAttributesById,
 } from "../../../api/character/api";
 
-const CharacterCreate = ({ existingCharacter, onCharacterSubmit }) => {
+const CharacterCreate = ({ existingCharacter }) => {
+  const context = useContext(CharacterListContext);
+  const { setCharacterById } = context;
   const shouldEditExistingCharacter = !!existingCharacter;
   let character = !!existingCharacter
     ? existingCharacter
@@ -65,11 +67,19 @@ const CharacterCreate = ({ existingCharacter, onCharacterSubmit }) => {
     action
       .then((response) => {
         setSubmitCount(submitCount + 1);
+        shouldEditExistingCharacter &&
+          setCharacterById(character.id, character);
       })
       .catch((err) => {
         console.error(err);
       });
-  }, [shouldEditExistingCharacter, character, submitCount, setSubmitCount]);
+  }, [
+    shouldEditExistingCharacter,
+    character,
+    submitCount,
+    setSubmitCount,
+    setCharacterById,
+  ]);
 
   const value = {
     character,

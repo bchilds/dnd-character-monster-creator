@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PropTypes from 'prop-types';
+import CharacterListContext from "../../../contexts/character-list";
 import CharacterCreate from "../character-create";
-import { getCharacterById } from "../../../api/character/api";
 import { useParams } from "react-router-dom";
 
-const CharacterUpdate = ({ onCharacterSubmit }) => {
+const CharacterUpdate = () => {
+  const context = useContext(CharacterListContext);
+  const { fetchCharacterById } = context;
   const [character, setCharacter] = useState(null);
   const { id } = useParams();
   useEffect(() => {
-    getCharacterById(id)
+    fetchCharacterById(id)
       .then((res) => {
         const char = res.data.data;
         setCharacter(char);
@@ -16,13 +18,12 @@ const CharacterUpdate = ({ onCharacterSubmit }) => {
       .catch((error) => {
         console.error(`Error loading character by ID: ${id}`, error);
       });
-  }, [id, setCharacter]);
+  }, [id, setCharacter, fetchCharacterById]);
 
   return (
     <React.Suspense fallback={<div>Loading Characters...</div>}>
       <CharacterCreate
         existingCharacter={character}
-        onCharacterSubmit={onCharacterSubmit}
       />
     </React.Suspense>
   );

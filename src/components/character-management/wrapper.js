@@ -49,6 +49,8 @@ const CharacterListWrapper = ({ children }) => {
       });
   }, [isMounted, setLoadingCharacters]);
 
+  const fetchCharacterById = useCallback((id) => characters.find(char => char.id === id), [characters]);
+
   const deleteCharacterById = useCallback(
     (id) => {
       const foundCharacterIndex = characters.findIndex(
@@ -71,6 +73,7 @@ const CharacterListWrapper = ({ children }) => {
     setAllCharacters,
     fetchAllCharacters,
     deleteCharacterById,
+    fetchCharacterById,
   };
 
   return (

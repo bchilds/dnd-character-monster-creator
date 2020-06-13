@@ -7,6 +7,7 @@ const CharacterListContext = createContext({
   setCharacterById: undefined,
   setAllCharacters: undefined,
   fetchAllCharacters: undefined,
+  fetchCharacterById: undefined,
   deleteCharacterById: undefined,
 });
 CharacterListContext.displayName = 'CharacterListContext';
