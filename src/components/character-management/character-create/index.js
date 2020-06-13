@@ -16,13 +16,12 @@ import {
   editCharacterAttributesById,
 } from "../../../api/character/api";
 
-const CharacterCreate = ({ existingCharacterId }) => {
+const CharacterCreate = ({ existingCharacterId = undefined }) => {
   const context = useContext(CharacterListContext);
   const { setCharacterById, fetchCharacterById } = context;
   const shouldEditExistingCharacter = !!existingCharacterId;
-  let character = !!existingCharacterId
-    ? fetchCharacterById(existingCharacterId)
-    : generateDefaultNewCharacter();
+  let character = fetchCharacterById(existingCharacterId);
+  character = character || generateDefaultNewCharacter();
   const [submitCount, setSubmitCount] = useState(0);
   const { setName, name } = useInput("name", character?.name);
   const { setRace, race } = useInput("race", character?.race);

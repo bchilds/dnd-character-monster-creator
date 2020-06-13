@@ -28,26 +28,22 @@ const CharacterListWrapper = ({ children }) => {
   );
 
   const setAllCharacters = useCallback(
-    (newCharacters) => {
+    (newCharacters = emptyArray) => {
       isMounted.current && setCharacters(newCharacters);
     },
     [isMounted, setCharacters]
   );
 
   const fetchAllCharacters = useCallback(() => {
-    console.log('fetching all chars')
-    isMounted.current && setLoadingCharacters(true);
     return getAllCharacters()
       .then((res) => {
-        isMounted.current && setLoadingCharacters(false);
         const chars = res.data.data || [];
         return chars;
       })
       .catch((err) => {
         console.error(err);
-        isMounted.current && setLoadingCharacters(false);
       });
-  }, [isMounted, setLoadingCharacters]);
+  }, []);
 
   const fetchCharacterById = useCallback(
     (id) => {
@@ -80,6 +76,7 @@ const CharacterListWrapper = ({ children }) => {
     fetchAllCharacters,
     deleteCharacterById,
     fetchCharacterById,
+    setLoadingCharacters: (loading) => { isMounted && setLoadingCharacters(loading) },
   };
 
   return (
