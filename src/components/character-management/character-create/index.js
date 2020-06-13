@@ -16,12 +16,12 @@ import {
   editCharacterAttributesById,
 } from "../../../api/character/api";
 
-const CharacterCreate = ({ existingCharacter }) => {
+const CharacterCreate = ({ existingCharacterId }) => {
   const context = useContext(CharacterListContext);
-  const { setCharacterById } = context;
-  const shouldEditExistingCharacter = !!existingCharacter;
-  let character = !!existingCharacter
-    ? existingCharacter
+  const { setCharacterById, fetchCharacterById } = context;
+  const shouldEditExistingCharacter = !!existingCharacterId;
+  let character = !!existingCharacterId
+    ? fetchCharacterById(existingCharacterId)
     : generateDefaultNewCharacter();
   const [submitCount, setSubmitCount] = useState(0);
   const { setName, name } = useInput("name", character?.name);
@@ -91,6 +91,7 @@ const CharacterCreate = ({ existingCharacter }) => {
       setSubclass,
     },
   };
+  console.log('rendering for God knows why with ', character)
   return (
     <CharacterProvider value={value}>
       <div className={style["form"]}>

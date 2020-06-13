@@ -1,6 +1,5 @@
 import React, { useMemo, useContext } from "react";
-import CircleLoader from "react-spinners/CircleLoader";
-
+import LoadingSpinner from '../../loading-spinner';
 import PreformattedTable from "../../react-table";
 import CharacterContext from "../../../contexts/character-list";
 import UpdateLink from "./update-link";
@@ -80,7 +79,7 @@ const CharacterList = () => {
   if (isLoadingCharacters) {
     return (
       <div className={style["preformatted-table"]}>
-        <CircleLoader size={75} color="#D3212D" />
+        <LoadingSpinner />
       </div>
     );
   }

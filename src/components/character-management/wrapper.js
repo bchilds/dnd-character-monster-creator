@@ -5,7 +5,7 @@ import { emptyArray } from "../../defaults/empty";
 import { useMountedState } from "../../helpers/use-mounted-state";
 
 const CharacterListWrapper = ({ children }) => {
-  const [isLoadingCharacters, setLoadingCharacters] = useState(false);
+  const [isLoadingCharacters, setLoadingCharacters] = useState(true);
   const [characters, setCharacters] = useState(emptyArray);
   const isMounted = useMountedState();
 
@@ -35,6 +35,7 @@ const CharacterListWrapper = ({ children }) => {
   );
 
   const fetchAllCharacters = useCallback(() => {
+    console.log('fetching all chars')
     isMounted.current && setLoadingCharacters(true);
     return getAllCharacters()
       .then((res) => {
@@ -49,7 +50,10 @@ const CharacterListWrapper = ({ children }) => {
   }, [isMounted, setLoadingCharacters]);
 
   const fetchCharacterById = useCallback(
-    (id) => characters.find((char) => char._id === id),
+    (id) => {
+      console.log('fetching ', id)
+      return characters.find((char) => char._id === id)
+    },
     [characters]
   );
 
