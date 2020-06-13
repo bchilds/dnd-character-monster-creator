@@ -46,13 +46,10 @@ const CharacterListWrapper = ({ children }) => {
         console.error(err);
         isMounted.current && setLoadingCharacters(false);
       });
-  }, [isMounted, setLoadingCharacters, setAllCharacters]);
+  }, [isMounted, setLoadingCharacters]);
 
   const fetchCharacterById = useCallback(
-    (id) => {
-      debugger;
-      return characters.find((char) => char._id === id);
-    },
+    (id) => characters.find((char) => char._id === id),
     [characters]
   );
 

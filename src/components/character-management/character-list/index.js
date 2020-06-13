@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useContext } from "react";
+import React, { useMemo, useContext } from "react";
 import CircleLoader from "react-spinners/CircleLoader";
 
 import PreformattedTable from "../../react-table";
@@ -74,17 +74,8 @@ const CharacterList = () => {
   const {
     characters = [],
     isLoadingCharacters,
-    fetchAllCharacters,
-    setAllCharacters,
   } = context;
   const tableColumns = useMemo(getDefaultColumns);
-
-  useEffect(() => {
-    fetchAllCharacters &&
-      fetchAllCharacters().then((characters) => {
-        setAllCharacters && setAllCharacters(characters);
-      });
-  }, [setAllCharacters, fetchAllCharacters]);
 
   if (isLoadingCharacters) {
     return (
