@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { updateCharactersMatch } from './routing-helpers';
+import { updateCharactersMatch } from "./routing-helpers";
 import NavBar from "../components/nav/nav-bar";
 import Pages from "../components/pages";
-import CharacterListWrapper from '../components/character-management/wrapper';
+import CharacterListWrapper from "../components/character-management/wrapper";
 
 function App() {
   return (

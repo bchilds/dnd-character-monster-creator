@@ -42,13 +42,17 @@ const Drawer = () => {
 
   // if mobile... (let's pretend everything is mobile to start)
   return (
-    <div className={style['top-bar']}>
+    <div className={style["top-bar"]}>
       {MENU_OPTIONS.map((topLevelMenuOption) => (
         <React.Fragment key={topLevelMenuOption}>
           <Button
             color={"primary"}
             onClick={toggleDrawer(topLevelMenuOption, true)}
-            variant={location.startsWith(MENU_OPTION_ROUTES[topLevelMenuOption]) ? "contained" : "outlined"}
+            variant={
+              location.startsWith(MENU_OPTION_ROUTES[topLevelMenuOption])
+                ? "contained"
+                : "outlined"
+            }
           >
             {topLevelMenuOption}
           </Button>

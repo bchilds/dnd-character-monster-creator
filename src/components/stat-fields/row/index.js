@@ -24,7 +24,7 @@ const Row = ({ statName }) => {
         className="base-stat-box"
         value={baseStat}
         type="number"
-        onChange={e => {
+        onChange={(e) => {
           const value = e.target.value;
           setCharacterBaseStat(statName, value);
         }}

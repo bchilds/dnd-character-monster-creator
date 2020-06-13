@@ -20,7 +20,7 @@ const renderGridHeader = () => (
 const PointsGrid = () => (
   <div className={style["stats-grid"]}>
     {renderGridHeader()}
-    {allStats.map(statName => (
+    {allStats.map((statName) => (
       <Row key={statName} statName={statName} />
     ))}
   </div>

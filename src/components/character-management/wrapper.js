@@ -34,22 +34,27 @@ const CharacterListWrapper = ({ children }) => {
     [isMounted, setCharacters]
   );
 
-  // below is not handled correctly when used in this way, can cause memory leak
-  // "correct" solution is probably to remove API call from context
   const fetchAllCharacters = useCallback(() => {
     isMounted.current && setLoadingCharacters(true);
     return getAllCharacters()
       .then((res) => {
         isMounted.current && setLoadingCharacters(false);
-        return res.data.data || [];
+        const chars = res.data.data || [];
+        return chars;
       })
       .catch((err) => {
         console.error(err);
         isMounted.current && setLoadingCharacters(false);
       });
-  }, [isMounted, setLoadingCharacters]);
+  }, [isMounted, setLoadingCharacters, setAllCharacters]);
 
-  const fetchCharacterById = useCallback((id) => characters.find(char => char.id === id), [characters]);
+  const fetchCharacterById = useCallback(
+    (id) => {
+      debugger;
+      return characters.find((char) => char._id === id);
+    },
+    [characters]
+  );
 
   const deleteCharacterById = useCallback(
     (id) => {

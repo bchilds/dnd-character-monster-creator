@@ -9,5 +9,5 @@ export default {
   12: { cost: 4 },
   13: { cost: 5 },
   14: { cost: 7 },
-  15: { cost: 9 }
+  15: { cost: 9 },
 };

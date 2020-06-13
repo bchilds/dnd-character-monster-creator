@@ -1,11 +1,17 @@
-import React, { useContext } from 'react';
-import CharacterContext from '../../../contexts/character';
-import style from './style.module.scss';
+import React, { useContext } from "react";
+import CharacterContext from "../../../contexts/character";
+import style from "./style.module.scss";
 
 const CharacterAttributes = () => {
   const { character, characterActions } = useContext(CharacterContext);
   const { name, race, level, characterClass, subclass } = character;
-  const { setName, setRace, setLevel, setCharacterClass, setSubclass } = characterActions;
+  const {
+    setName,
+    setRace,
+    setLevel,
+    setCharacterClass,
+    setSubclass,
+  } = characterActions;
   return (
     <>
       <div className={style["form-section"]}>
@@ -58,6 +64,6 @@ const CharacterAttributes = () => {
       </div>
     </>
   );
-}
+};
 
 export default CharacterAttributes;

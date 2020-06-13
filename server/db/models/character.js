@@ -12,15 +12,15 @@ const Character = new Schema(
     subclass: { type: String, required: false },
     descripton: { type: String, required: false },
     languages: [{ type: String, required: true }],
-    tools: [{ type: String, required: false}],
+    tools: [{ type: String, required: false }],
     stats: Statblock.schema,
     feats: [Feat.schema],
   },
   { timestamps: true }
 );
 
-Character.query.byName = function(name) {
-    return this.where({ name: new RegExp(name, 'i') });
-  };
+Character.query.byName = function (name) {
+  return this.where({ name: new RegExp(name, "i") });
+};
 
 module.exports = mongoose.model("character", Character);

@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import { emptyObject } from "../defaults/empty";
 import stats from "../helpers/stats";
-import defaultStrategy from "../defaults/point-strategy"
+import defaultStrategy from "../defaults/point-strategy";
 
 export const generateDefaultNewCharacter = () => ({
   _id: undefined,
@@ -15,7 +15,7 @@ export const generateDefaultNewCharacter = () => ({
   languages: ["Common"],
   baseStats: { ...stats },
   levelStats: emptyObject,
-  additionalStats: emptyObject
+  additionalStats: emptyObject,
 });
 
 const CharacterContext = createContext({

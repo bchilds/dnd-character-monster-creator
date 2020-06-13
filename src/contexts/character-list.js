@@ -10,7 +10,7 @@ const CharacterListContext = createContext({
   fetchCharacterById: undefined,
   deleteCharacterById: undefined,
 });
-CharacterListContext.displayName = 'CharacterListContext';
+CharacterListContext.displayName = "CharacterListContext";
 
 export const CharacterListProvider = CharacterListContext.Provider;
 export const CharacterListConsumer = CharacterListContext.Consumer;

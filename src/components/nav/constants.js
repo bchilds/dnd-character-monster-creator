@@ -9,8 +9,8 @@ export const MENU_OPTION_MAP = {
   [MONS_MGMT]: MonsterManagementOptions,
 };
 export const MENU_OPTION_ROUTES = {
-  [CHAR_MGMT]: '/characters',
-  [MONS_MGMT]: '/monsters',
+  [CHAR_MGMT]: "/characters",
+  [MONS_MGMT]: "/monsters",
 };
 export const CREATE_ROUTE = "/characters/create";
 export const LIST_ROUTE = "/characters/list";
