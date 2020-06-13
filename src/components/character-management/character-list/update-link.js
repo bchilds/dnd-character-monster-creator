@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 
-import { getUpdateCharacterUrlById } from '../../../src/app/routing-helpers';
+import { getUpdateCharacterUrlById } from '../../../app/routing-helpers';
 
 import style from "./style.module.scss";
 

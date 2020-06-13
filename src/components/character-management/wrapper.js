@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from "react";
-import { CharacterListProvider } from "../../../src/contexts/character-list";
+import { CharacterListProvider } from "../../contexts/character-list";
 import { getAllCharacters } from "../../api/character/api";
 import { emptyArray } from "../../defaults/empty";
-import { useMountedState } from "../../../src/helpers/use-mounted-state";
+import { useMountedState } from "../../helpers/use-mounted-state";
 
 const CharacterListWrapper = ({ children }) => {
   const [isLoadingCharacters, setLoadingCharacters] = useState(false);

@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import CharacterCreate from "../character-create";
-import CharacterUpdate from "../character-update";
-import CharacterList from "../character-list";
+import CharacterCreate from "../character-management/character-create";
+import CharacterUpdate from "../character-management/character-update";
+import CharacterList from "../character-management/character-list";
 import style from "./style.module.scss";
 
 const PageWrapper = ({ children }) => {

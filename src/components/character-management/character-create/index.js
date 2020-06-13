@@ -2,21 +2,21 @@ import React, { useState, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 import { Button } from "@material-ui/core";
 
-import { useInput } from "../../hooks/use-input";
+import { useInput } from "../../../hooks/use-input";
 import {
   CharacterProvider,
   generateDefaultNewCharacter,
-} from "../../../src/contexts/character";
+} from "../../../contexts/character";
 import CharacterAttributes from "./character-attributes";
-import Character from "../../props/character";
+import Character from "../../../props/character";
 import style from "./style.module.scss";
 
 import {
   createNewCharacter,
   editCharacterAttributesById,
-} from "../../api/character/api";
+} from "../../../api/character/api";
 
-const CharacterCreate = ({ existingCharacter }) => {
+const CharacterCreate = ({ existingCharacter, onCharacterSubmit }) => {
   const shouldEditExistingCharacter = !!existingCharacter;
   let character = !!existingCharacter
     ? existingCharacter

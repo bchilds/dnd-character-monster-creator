@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import CharacterContext from '../../../src/contexts/character';
+import CharacterContext from '../../../contexts/character';
 import style from './style.module.scss';
 
 const CharacterAttributes = () => {

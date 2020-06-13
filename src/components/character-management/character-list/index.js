@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useContext } from "react";
 import CircleLoader from "react-spinners/CircleLoader";
 
-import PreformattedTable from "../react-table";
-import CharacterContext from "../../../src/contexts/character-list";
+import PreformattedTable from "../../react-table";
+import CharacterContext from "../../../contexts/character-list";
 import UpdateLink from "./update-link";
 import DeleteLink from "./delete-link";
 

@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from "react";
-import { deleteCharacter } from "../../api/character/api";
-import CharacterContext from "../../../src/contexts/character-list";
+import { deleteCharacter } from "../../../api/character/api";
+import CharacterContext from "../../../contexts/character-list";
 
 import style from "./style.module.scss";
 const DeleteLink = ({ id }) => {
