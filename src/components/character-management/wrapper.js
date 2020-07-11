@@ -47,8 +47,8 @@ const CharacterListWrapper = ({ children }) => {
 
   const fetchCharacterById = useCallback(
     (id) => {
-      console.log('fetching ', id)
-      return characters.find((char) => char._id === id)
+      console.log("fetching ", id);
+      return characters.find((char) => char._id === id);
     },
     [characters]
   );
@@ -76,7 +76,9 @@ const CharacterListWrapper = ({ children }) => {
     fetchAllCharacters,
     deleteCharacterById,
     fetchCharacterById,
-    setLoadingCharacters: (loading) => { isMounted && setLoadingCharacters(loading) },
+    setLoadingCharacters: (loading) => {
+      isMounted && setLoadingCharacters(loading);
+    },
   };
 
   return (

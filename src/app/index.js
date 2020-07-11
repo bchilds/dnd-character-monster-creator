@@ -16,11 +16,11 @@ const CharacterContainer = () => {
     setLoadingCharacters,
   } = context;
   useEffect(() => {
-    console.log('fetching chars')
+    console.log("fetching chars");
     fetchAllCharacters &&
       fetchAllCharacters()
-      .then((characters) => {
-          console.log('fetched: ', characters)
+        .then((characters) => {
+          console.log("fetched: ", characters);
           setAllCharacters && setAllCharacters(characters);
           setLoadingCharacters && setLoadingCharacters(false);
         })

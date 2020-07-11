@@ -1,5 +1,5 @@
 import React, { useMemo, useContext } from "react";
-import LoadingSpinner from '../../loading-spinner';
+import LoadingSpinner from "../../loading-spinner";
 import PreformattedTable from "../../react-table";
 import CharacterContext from "../../../contexts/character-list";
 import UpdateLink from "./update-link";
@@ -70,10 +70,7 @@ const getDefaultColumns = () => [
 
 const CharacterList = () => {
   const context = useContext(CharacterContext);
-  const {
-    characters = [],
-    isLoadingCharacters,
-  } = context;
+  const { characters = [], isLoadingCharacters } = context;
   const tableColumns = useMemo(getDefaultColumns);
 
   if (isLoadingCharacters) {

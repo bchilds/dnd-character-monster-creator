@@ -90,7 +90,7 @@ const CharacterCreate = ({ existingCharacterId = undefined }) => {
       setSubclass,
     },
   };
-  console.log('rendering for God knows why with ', character)
+  console.log("rendering for God knows why with ", character);
   return (
     <CharacterProvider value={value}>
       <div className={style["form"]}>
