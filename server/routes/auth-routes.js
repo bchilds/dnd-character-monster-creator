@@ -4,11 +4,24 @@ const AuthController = require('../controllers/auth-controller');
 
 const router = express.Router();
 
-router.get('/auth/google', AuthController.googleAuthenticate);
+router.get(
+  '/auth/google',
+  () => {
+    console.log('authing');
+  },
+  passport.authenticate('google', {
+    scope: ['profile', 'email'],
+  })
+);
 router.get(
   '/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  (req, res) => res.redirect('/')
+  () => {
+    console.log('callback received');
+  },
+  passport.authenticate('google', {
+    successRedirect: '/characters',
+    failureRedirect: '/login',
+  })
 );
 
 module.exports = router;

@@ -14,13 +14,17 @@ const app = express();
 const apiPort = 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+  })
+);
 app.use(bodyParser.json());
 app.use(
   session({
     secret: 'cowboy coder',
     resave: true,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookies: { secure: false }, // needs https
     store: new MongoStore({ mongooseConnection: dbConnection }),
   })

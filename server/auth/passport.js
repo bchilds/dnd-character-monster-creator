@@ -1,5 +1,5 @@
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 // Use the GoogleStrategy within Passport.
 //   Strategies in passport require a `verify` function, which accept
@@ -8,17 +8,25 @@ const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 passport.use(
   new GoogleStrategy(
     {
-      consumerKey: process.env.GOOGLE_CONSUMER_KEY,
-      consumerSecret: process.env.GOOGLE_CONSUMER_SECRET,
-      callbackURL: '/auth/google/callback',
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: 'http://localhost:3000/api/auth/google/callback',
     },
-    function (token, tokenSecret, profile, done) {
-      return done(undefined, { userProfile: profile });
-      // User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      //   return done(err, user);
-      // });
+    function (accessToken, refreshToken, profile, done) {
+      console.log(profile); //profile contains all the personal data returned
+      done(null, profile);
     }
   )
 );
+
+passport.serializeUser(function (user, callback) {
+  console.log('serializing user.');
+  callback(null, user.id);
+});
+
+passport.deserializeUser(function (user, callback) {
+  console.log('deserialize user.');
+  callback(null, user.id);
+});
 
 module.exports = passport;
