@@ -1,15 +1,15 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/dnd-proj", {
+  .connect(process.env.MONGOD_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
   })
   .catch((e) => {
-    console.error("Connection error", e.message);
+    console.error('Connection error', e.message);
   });
 
-const db = mongoose.connection;
+const dbConnection = mongoose.connection;
 
-module.exports = db;
+module.exports = dbConnection;

@@ -8,8 +8,8 @@ const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 passport.use(
   new GoogleStrategy(
     {
-      consumerKey: GOOGLE_CONSUMER_KEY,
-      consumerSecret: GOOGLE_CONSUMER_SECRET,
+      consumerKey: process.env.GOOGLE_CONSUMER_KEY,
+      consumerSecret: process.env.GOOGLE_CONSUMER_SECRET,
       callbackURL: '/auth/google/callback',
     },
     function (token, tokenSecret, profile, done) {

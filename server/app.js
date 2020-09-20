@@ -1,11 +1,12 @@
+require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const bodyParser = require('body-parser');
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth').Strategy;
+const passport = require('./auth/passport');
 const cors = require('cors');
 
-const db = require('./db');
+const dbConnection = require('./db');
 const characterRouter = require('./routes/character-routes');
 const authRouter = require('./routes/auth-routes');
 
@@ -21,12 +22,16 @@ app.use(
     resave: true,
     saveUninitialized: false,
     cookies: { secure: false }, // needs https
+    store: new MongoStore({ mongooseConnection: dbConnection }),
   })
 );
 app.use(passport.initialize());
 app.use(passport.session());
 
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+dbConnection.on(
+  'error',
+  console.error.bind(console, 'MongoDB connection error:')
+);
 
 app.use('/api', authRouter);
 app.use('/api', characterRouter);
