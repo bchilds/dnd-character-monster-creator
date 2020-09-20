@@ -35,6 +35,7 @@
     "eslint-plugin-react": "7.19.0",
     "eslint-plugin-react-hooks": "^1.6.1",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "file-loader": "4.3.0",
     "fs-extra": "^8.1.0",
     "html-webpack-plugin": "4.0.0-beta.11",
@@ -46,6 +47,9 @@
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.3",
     "optimize-css-assets-webpack-plugin": "5.0.3",
+    "passport": "^0.4.1",
+    "passport-google-oauth": "^2.0.0",
+    "passport-local": "^1.0.0",
     "pnp-webpack-plugin": "1.6.4",
     "postcss-flexbugs-fixes": "4.1.0",
     "postcss-loader": "3.0.0",
@@ -81,7 +85,8 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "format": "prettier --write \"**/*.{scss,js,json,yaml}\"",
-    "format-check": "prettier --check \"**/*.{scss,js,json,yaml}\""
+    "format-check": "prettier --check \"**/*.{scss,js,json,yaml}\"",
+    "server": "nodemon server/app.js"
   },
   "eslintConfig": {
     "extends": "react-app"

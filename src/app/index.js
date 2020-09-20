@@ -60,7 +60,7 @@ function App() {
         </CharacterListWrapper>
       </Switch>
       <Switch>
-        <Route exact path='/' component={Pages.LandingPage} />{' '}
+        <Route exact path='/' component={Pages.LandingPage} />
         {/*this will work for now */}
       </Switch>
     </Router>

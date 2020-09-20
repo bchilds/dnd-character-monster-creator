@@ -1,5 +1,5 @@
-const util = require("util");
-const Character = require("../db/models/character");
+const util = require('util');
+const Character = require('../db/models/character');
 
 const createCharacter = (req, res) => {
   const { body } = req;
@@ -7,7 +7,7 @@ const createCharacter = (req, res) => {
   if (!body) {
     return res.status(400).json({
       success: false,
-      error: "No character provided",
+      error: 'No character provided',
     });
   }
 
@@ -15,7 +15,7 @@ const createCharacter = (req, res) => {
   if (!character) {
     return res.status(400).json({
       success: false,
-      error: "Could not create a character.",
+      error: 'Could not create a character.',
     });
   }
 
@@ -25,13 +25,13 @@ const createCharacter = (req, res) => {
       return res.status(201).json({
         success: true,
         id: character._id,
-        message: "Character created!",
+        message: 'Character created!',
       });
     })
     .catch((error) => {
       return res.status(400).json({
         error,
-        message: "Character not created!",
+        message: 'Character not created!',
       });
     });
 };
@@ -42,7 +42,7 @@ const updateCharacter = async (req, res) => {
   if (!body) {
     return res.status(400).json({
       success: false,
-      error: "You must provide a body to update",
+      error: 'You must provide a body to update',
     });
   }
 
@@ -56,20 +56,20 @@ const updateCharacter = async (req, res) => {
       if (err) {
         return res.status(404).json({
           err,
-          message: "Character not found!",
+          message: 'Character not found!',
         });
       }
 
       return res.status(200).json({
         success: true,
         id: character._id,
-        message: "Character updated!",
+        message: 'Character updated!',
       });
     }
   ).catch((error) => {
     return res.status(404).json({
       error,
-      message: "Character not updated!",
+      message: 'Character not updated!',
     });
   });
 };
@@ -122,12 +122,6 @@ const getAllCharacters = async (req, res) => {
         error: err,
       });
     }
-
-    // if (!characters.length) {
-    //   return res
-    //     .status(404)
-    //     .json({ success: false, error: `Characters not found` });
-    // }
 
     return res.status(200).json({ success: true, data: characters });
   });
