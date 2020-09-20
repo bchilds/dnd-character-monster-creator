@@ -1,14 +1,11 @@
-// import passport
+const passport = require('../auth/passport');
 
 const googleAuthenticate = (req, res) => {
-  return true;
-};
-
-const googleAuthenticateCallback = (req, res) => {
-  return true;
+  passport.authenticate('google', {
+    scope: ['https://www.googleapis.com/auth/plus.login'],
+  });
 };
 
 module.exports = {
   googleAuthenticate,
-  googleAuthenticateCallback,
 };

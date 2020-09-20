@@ -13,7 +13,7 @@ passport.use(
       callbackURL: '/auth/google/callback',
     },
     function (token, tokenSecret, profile, done) {
-      return done(err, { userProfile: profile });
+      return done(undefined, { userProfile: profile });
       // User.findOrCreate({ googleId: profile.id }, function (err, user) {
       //   return done(err, user);
       // });
