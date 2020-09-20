@@ -1,4 +1,4 @@
-@import "src/sass/_colors.scss";
+@import 'src/sass/_colors.scss';
 
 @mixin invertColors() {
   background: $fontWhite;
@@ -57,6 +57,7 @@
   flex-grow: 1;
 
   a {
+    width: fit-content;
     color: $fontWhite;
     text-decoration: none;
     font-size: 8px;

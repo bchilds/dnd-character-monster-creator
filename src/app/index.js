@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import LoadingSpinner from "../components/loading-spinner";
-import CharacterContext from "../contexts/character-list";
-import { updateCharactersMatch } from "./routing-helpers";
-import NavBar from "../components/nav/nav-bar";
-import Pages from "../components/pages";
-import CharacterListWrapper from "../components/character-management/wrapper";
+import React, { useContext, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import LoadingSpinner from '../components/loading-spinner';
+import CharacterContext from '../contexts/character-list';
+import { updateCharactersMatch } from './routing-helpers';
+import NavBar from '../components/nav/nav-bar';
+import Pages from '../components/pages';
+import CharacterListWrapper from '../components/character-management/wrapper';
 
 const CharacterContainer = () => {
   const context = useContext(CharacterContext);
@@ -16,11 +16,11 @@ const CharacterContainer = () => {
     setLoadingCharacters,
   } = context;
   useEffect(() => {
-    console.log("fetching chars");
+    console.log('fetching chars');
     fetchAllCharacters &&
       fetchAllCharacters()
         .then((characters) => {
-          console.log("fetched: ", characters);
+          console.log('fetched: ', characters);
           setAllCharacters && setAllCharacters(characters);
           setLoadingCharacters && setLoadingCharacters(false);
         })
@@ -35,9 +35,9 @@ const CharacterContainer = () => {
   }
   return (
     <>
-      <Route path="/characters/list" exact component={Pages.CharacterList} />
+      <Route path='/characters/list' exact component={Pages.CharacterList} />
       <Route
-        path="/characters/create"
+        path='/characters/create'
         exact
         component={Pages.CharacterCreate}
       />
@@ -58,6 +58,10 @@ function App() {
         <CharacterListWrapper>
           <CharacterContainer />
         </CharacterListWrapper>
+      </Switch>
+      <Switch>
+        <Route exact path='/' component={Pages.LandingPage} />{' '}
+        {/*this will work for now */}
       </Switch>
     </Router>
   );
